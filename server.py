@@ -4,13 +4,11 @@ import time
 import os
 import flask
 from flask_cors import CORS
-
-from flask import g
-CORS(APP)
-
 from playwright.sync_api import sync_playwright
 
 APP = flask.Flask(__name__)
+CORS(APP)
+
 PLAY = sync_playwright().start()
 BROWSER = PLAY.chromium.launch_persistent_context(
     user_data_dir="/tmp/playwright",
